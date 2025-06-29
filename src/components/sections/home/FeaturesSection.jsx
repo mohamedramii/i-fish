@@ -113,14 +113,16 @@ const FeaturesSection = () => {
             {feature.description}
           </p>
           
-          {/* Checklist */}
-          <div className="space-y-2 lg:space-y-3">
-            {feature.checklist.map((item, index) => (
-              <div key={index} className="flex items-center justify-center lg:justify-end gap-2">
-                <span className="text-xs lg:text-sm text-slate-50 font-tajawal">{item}</span>
-                <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-green-500 flex-shrink-0" />
-              </div>
-            ))}
+          {/* Checklist - Fixed Alignment */}
+          <div className="inline-block text-right">
+            <div className="space-y-2 lg:space-y-3">
+              {feature.checklist.map((item, index) => (
+                <div key={index} className="flex justify-end items-center gap-2">
+                  <span className="text-xs lg:text-sm text-slate-50 font-tajawal">{item}</span>
+                  <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-green-500 flex-shrink-0" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

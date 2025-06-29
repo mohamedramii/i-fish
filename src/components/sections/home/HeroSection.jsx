@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import Button from '@/components/ui/Button';
+import './hero-animations.css'; 
 
 
 const HeroSection = () => {
-  // Stats data
   const stats = [
     { value: '+500', label: 'قارب صيد' },
     { value: '+1200', label: 'عميل نشط' },
@@ -36,11 +36,11 @@ const HeroSection = () => {
           <div className="flex flex-col lg:flex-row items-center gap-8">
             
             {/* Images Side - Fixed Width */}
-            <div className="w-full lg:w-[45%] scale-75 md:scale-75 lg:scale-100 lg:max-w-[596px] order-1 lg:order-2">
-              <div className="relative w-full">
+            <div className="w-full lg:w-[45%] scale-85 md:scale-75 lg:scale-100 lg:max-w-[596px] order-1 lg:order-2">
+              <div className="relative w-full floating-images-container">
                 
-                {/* Main Image Container */}
-                <div className="relative w-full aspect-[4/3]">
+                {/* Main Image Container - Stays Static */}
+                <div className="relative w-full aspect-[4/3] main-dashboard-image">
                   <Image
                     src="/sections/home/Home 1.png"
                     alt="Dashboard"
@@ -49,8 +49,8 @@ const HeroSection = () => {
                   />
                 </div>
                 
-                {/* Floating Images */}
-                <div className="absolute w-16 h-14 lg:w-28 lg:h-24 right-[5%] top-[8%]">
+                {/* Floating Images with Animations */}
+                <div className="absolute w-16 h-14 lg:w-28 lg:h-24 right-[5%] top-[8%] floating-image-4">
                   <Image
                     src="/sections/home/smal-image04.png"
                     alt="Feature 4"
@@ -59,7 +59,7 @@ const HeroSection = () => {
                   />
                 </div>
                 
-                <div className="absolute w-16 h-8 lg:w-26 lg:h-12 left-[30%] lg:left-[35%] top-[8%]">
+                <div className="absolute w-16 h-8 lg:w-26 lg:h-12 left-[30%] lg:left-[35%] top-[8%] floating-image-1">
                   <Image
                     src="/sections/home/smal-image01.png"
                     alt="Feature 1"
@@ -68,7 +68,7 @@ const HeroSection = () => {
                   />
                 </div>
                 
-                <div className="absolute w-16 h-10 lg:w-30 lg:h-16 right-[-10px] lg:right-[-20px] top-[40%]">
+                <div className="absolute w-16 h-10 lg:w-30 lg:h-16 right-[-10px] lg:right-[-20px] top-[48%] floating-image-2">
                   <Image
                     src="/sections/home/smal-image02.png"
                     alt="Feature 2"
@@ -77,7 +77,7 @@ const HeroSection = () => {
                   />
                 </div>
                 
-                <div className="absolute w-20 h-12 lg:w-32 lg:h-16 left-[10%] lg:left-[15%] bottom-[20%] lg:bottom-[28.5%]">
+                <div className="absolute w-20 h-12 lg:w-32 lg:h-16 left-[10%] lg:left-[0%] bottom-[20%] lg:bottom-[20%] floating-image-3">
                   <Image
                     src="/sections/home/smal-image03.png"
                     alt="Feature 3"
@@ -89,7 +89,7 @@ const HeroSection = () => {
             </div>
             
             {/* Text Side - Flexible Width */}
-            <div className="w-full md:max-w-[55%]  order-1 lg:order-2">
+            <div className="w-full md:max-w-[55%] order-1 lg:order-2">
               <div className="flex flex-col items-end text-right gap-6">
                 
                 {/* Title */}

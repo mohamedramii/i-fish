@@ -1,6 +1,7 @@
 import { Tajawal } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/ui/Footer";
+import "@/lib/fontawesome"; // Import FontAwesome configuration
 
 const tajawal = Tajawal({
   variable: "--font-tajawal",

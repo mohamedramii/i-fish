@@ -1,9 +1,8 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from './Button';
-
 
 const Navbar = ({
   menuItems = [
@@ -17,6 +16,17 @@ const Navbar = ({
   className = '',
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50); 
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,8 +38,13 @@ const Navbar = ({
         mt-4 flex flex-row justify-between items-center
         px-4 py-0 gap-[10px]
         w-full max-w-[1300px] h-[80px]
-        bg-[rgba(34,119,181,0.18)] rounded-[15px]
+        ${isScrolled 
+          ? 'bg-[rgba(34,119,181,0.05)] backdrop-blur-md' 
+          : 'bg-[rgba(34,119,181,0.18)]'
+        }
+        rounded-[15px]
         relative
+        transition-all duration-300 ease-in-out
         ${className}
       `}
     >
@@ -41,7 +56,7 @@ const Navbar = ({
             variant="primary"
             className="w-[84px] h-[39px] bg-gradient-to-l from-[#07B3D5] to-[#2564EA]"
           />
-          <span className="text-[16px] text-white font-[400] font-tajawal whitespace-nowrap cursor-pointer hover:text-gray-200 transition-colors">
+          <span className="text-[16px] font-[400] font-tajawal whitespace-nowrap cursor-pointer transition-colors duration-300 text-[#F5F9FD] hover:text-[#07B3D5]">
             تسجيل الدخول
           </span>
         </div>
@@ -53,14 +68,12 @@ const Navbar = ({
           <Link
             key={index}
             href={item.href}
-            className="text-[16px] text-[#F5F9FD] font-[400] font-tajawal whitespace-nowrap hover:text-white transition-colors"
+            className="text-[16px] font-[400] font-tajawal whitespace-nowrap transition-colors duration-300 text-[#F5F9FD] hover:text-[#07B3D5]"
           >
             {item.name}
           </Link>
         ))}
       </div>
-
-     
 
       {/* Mobile Menu Button */}
       <button
@@ -69,17 +82,17 @@ const Navbar = ({
         aria-label="Toggle menu"
       >
         <span
-          className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+          className={`block w-6 h-0.5 transition-all duration-300 bg-[#F5F9FD] ${
             isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
           }`}
         />
         <span
-          className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+          className={`block w-6 h-0.5 transition-all duration-300 bg-[#F5F9FD] ${
             isMenuOpen ? 'opacity-0' : ''
           }`}
         />
         <span
-          className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+          className={`block w-6 h-0.5 transition-all duration-300 bg-[#F5F9FD] ${
             isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
           }`}
         />
@@ -94,7 +107,7 @@ const Navbar = ({
               <Link
                 key={index}
                 href={item.href}
-                className="text-[16px] text-[#F5F9FD] font-[400] font-tajawal hover:text-white transition-colors"
+                className="text-[16px] text-[#F5F9FD] font-[400] font-tajawal hover:text-[#07B3D5] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -110,7 +123,7 @@ const Navbar = ({
                   className="w-[84px] h-[39px] bg-gradient-to-l from-[#07B3D5] to-[#2564EA]"
                 />
                 <span 
-                  className="text-[16px] text-white font-[400] font-tajawal cursor-pointer hover:text-gray-200 transition-colors"
+                  className="text-[16px] text-[#F5F9FD] font-[400] font-tajawal cursor-pointer hover:text-[#07B3D5] transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   تسجيل الدخول

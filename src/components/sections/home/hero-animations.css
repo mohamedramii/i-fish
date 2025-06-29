@@ -1,0 +1,125 @@
+
+@keyframes waterFloat1 {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-6px) translateX(3px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-3px) translateX(6px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-8px) translateX(2px) rotate(-1deg);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+  }
+ 
+  @keyframes waterFloat2 {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    20% {
+      transform: translateY(-4px) translateX(-2px) rotate(0.5deg);
+    }
+    40% {
+      transform: translateY(-7px) translateX(-5px) rotate(1deg);
+    }
+    60% {
+      transform: translateY(-2px) translateX(-3px) rotate(-0.5deg);
+    }
+    80% {
+      transform: translateY(-5px) translateX(-1px) rotate(0.8deg);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+  }
+ 
+  @keyframes waterFloat3 {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    30% {
+      transform: translateY(-5px) translateX(4px) rotate(-0.8deg);
+    }
+    60% {
+      transform: translateY(-8px) translateX(-2px) rotate(1.2deg);
+    }
+    90% {
+      transform: translateY(-3px) translateX(3px) rotate(-0.5deg);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+  }
+ 
+  @keyframes waterFloat4 {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    15% {
+      transform: translateY(-3px) translateX(2px) rotate(0.7deg);
+    }
+    35% {
+      transform: translateY(-6px) translateX(5px) rotate(-0.3deg);
+    }
+    55% {
+      transform: translateY(-4px) translateX(-1px) rotate(1deg);
+    }
+    75% {
+      transform: translateY(-7px) translateX(3px) rotate(-0.8deg);
+    }
+    90% {
+      transform: translateY(-2px) translateX(-2px) rotate(0.4deg);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+  }
+ 
+  .floating-image-1 {
+    animation: waterFloat1 4s linear infinite;
+    animation-delay: 0s;
+  }
+ 
+  .floating-image-2 {
+    animation: waterFloat2 5s linear infinite;
+    animation-delay: 1s;
+  }
+ 
+  .floating-image-3 {
+    animation: waterFloat3 4.5s linear infinite;
+    animation-delay: 2.5s;
+  }
+ 
+  .floating-image-4 {
+    animation: waterFloat4 5.5s linear infinite;
+    animation-delay: 0.8s;
+  }
+ 
+  .floating-image-1,
+  .floating-image-2,
+  .floating-image-3,
+  .floating-image-4 {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+ 
+
+ 
+  .main-dashboard-image {
+    animation: none;
+    transform: none;
+  }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    .floating-image-1,
+    .floating-image-2,
+    .floating-image-3,
+    .floating-image-4 {
+      animation: none;
+    }
+  }

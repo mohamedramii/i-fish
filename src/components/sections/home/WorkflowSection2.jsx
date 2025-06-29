@@ -47,7 +47,7 @@ const StepsSection = () => {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-['Tajawal']">
+          <h2 className="text-4xl xl:text-5xl font-bold text-white mb-4 font-['Tajawal']">
             خطوات العمل معنا
           </h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto font-['Tajawal']">
@@ -57,8 +57,8 @@ const StepsSection = () => {
 
         {/* Steps Container */}
         <div className="relative">
-          {/* Mobile Layout - Vertical Timeline on Right */}
-          <div className="block md:hidden">
+          {/* Mobile Layout - Vertical Timeline on Right (Up to 1200px) */}
+          <div className="block xl:hidden">
             <div className="relative">
               {/* Mobile Vertical Line on Right - positioned exactly on step numbers */}
               <div className="absolute right-2.5 top-3 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-cyan-400"></div>
@@ -104,12 +104,12 @@ const StepsSection = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Horizontal Timeline */}
-          <div className="hidden md:block">
+          {/* Desktop Layout - Horizontal Timeline (1200px and above) */}
+          <div className="hidden xl:block">
             {/* Central Connecting Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-cyan-400 opacity-60 z-0"></div>
             
-            <div className="space-y-16 md:space-y-24">
+            <div className="space-y-16 xl:space-y-24">
               {steps.map((step, index) => (
                 <StepItem 
                   key={step.number}
@@ -129,7 +129,7 @@ const StepItem = ({ step, isReversed }) => {
   return (
     <div className="relative w-full max-w-6xl mx-auto">
       <div className={`flex items-center ${isReversed ? 'flex-row-reverse' : 'flex-row'}`}>
-        <div className={`flex items-center gap-6 md:gap-8 ${isReversed ? 'flex-row-reverse' : 'flex-row'}`}>
+        <div className={`flex items-center gap-6 xl:gap-8 ${isReversed ? 'flex-row-reverse' : 'flex-row'}`}>
           
           {/* Step Details Card */}
           <div className="relative max-w-lg">
@@ -139,7 +139,7 @@ const StepItem = ({ step, isReversed }) => {
               
               <div className="relative z-10 space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white text-right font-['Tajawal']">
+                  <h3 className="text-2xl xl:text-3xl font-bold text-white text-right font-['Tajawal']">
                     {step.title}
                   </h3>
                   <p className="text-blue-100 text-right leading-relaxed font-['Tajawal']">
