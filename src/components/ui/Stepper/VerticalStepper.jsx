@@ -2,26 +2,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Step from './Step';
 
-
-const VerticalStepper = ({ 
-  steps = [], 
-  activeStep = 0, 
-  onChange = () => {}, 
+const VerticalStepper = ({
+  steps = [],
+  activeStep = 0,
+  onStepClick = () => {},
+  onChange = () => {},
   allowNavigation = true,
   showDates = false,
   orientation = "vertical",
   customStyle = {},
   onStepComplete = null,
   renderStepContent = null,
-  children 
+  disabled = false,
+  children
 }) => {
   // If activeStep is controlled externally, use that, otherwise maintain internal state
   const [currentStep, setCurrentStep] = useState(activeStep);
   const prevActiveStepRef = useRef(activeStep);
-  
+ 
   // Use external activeStep if provided, otherwise use internal state
   const currentActiveStep = activeStep !== undefined ? activeStep : currentStep;
-
+  
   // Track when steps complete (when active step changes)
   useEffect(() => {
     const prevActiveStep = prevActiveStepRef.current;
@@ -34,7 +35,11 @@ const VerticalStepper = ({
 
   // Handle step click if navigation is allowed
   const handleStepClick = (index) => {
-    if (!allowNavigation) return;
+    if (!allowNavigation || disabled) return;
+   
+    if (onStepClick) {
+      onStepClick(index);
+    }
     
     if (onChange) {
       onChange(index);
@@ -43,10 +48,10 @@ const VerticalStepper = ({
     }
   };
 
-  // Base container styles - default to vertical
-  const containerClasses = orientation === "horizontal" 
-    ? "flex flex-row justify-start items-center p-0 w-full relative" 
-    : "flex flex-col justify-center items-end p-0 w-[254px] relative";
+  // Base container styles - responsive
+  const containerClasses = orientation === "horizontal"
+    ? "flex flex-row justify-start items-center p-0 w-full relative"
+    : "flex flex-row-reverse lg:flex-col justify-center items-end p-0 w-full lg:max-w-[254px] relative";
 
   return (
     <div className={containerClasses} style={customStyle}>
@@ -62,18 +67,18 @@ const VerticalStepper = ({
           showDate: showDates && !!step.dateInfo,
           dateInfo: step.dateInfo || ""
         };
-          
+         
         return (
-          <div 
-            key={index} 
-            className={`${allowNavigation ? "cursor-pointer" : ""} ${index === currentActiveStep ? "active-step" : ""}`}
+          <div
+            key={index}
+            className={`w-full ${(allowNavigation && !disabled) ? "cursor-pointer" : ""} ${index === currentActiveStep ? "active-step" : ""}`}
           >
             <Step
               {...stepProps}
               onClick={() => handleStepClick(index)}
               customStyle={step.customStyle}
             />
-            
+           
             {/* Render custom step content if provided */}
             {renderStepContent && currentActiveStep === index && renderStepContent(step, index)}
           </div>
